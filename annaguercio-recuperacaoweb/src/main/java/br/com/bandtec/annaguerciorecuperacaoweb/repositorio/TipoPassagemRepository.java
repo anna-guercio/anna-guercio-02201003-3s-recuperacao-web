@@ -4,4 +4,7 @@ import br.com.bandtec.annaguerciorecuperacaoweb.dominio.TipoPassagem;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface TipoPassagemRepository extends JpaRepository<TipoPassagem, Integer> {
+
+    Integer countByDescricao(String descricao);
+
 }

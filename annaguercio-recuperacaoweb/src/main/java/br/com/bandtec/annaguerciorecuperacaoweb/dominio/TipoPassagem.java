@@ -24,7 +24,7 @@ public class TipoPassagem {
     @PositiveOrZero
     private Double valor;
 
-    @OneToMany(mappedBy = "tipo")
+    @OneToMany(mappedBy = "tipoPassagem")
     @JsonIgnore
     private List<BilheteUnico> bilhetes;
 

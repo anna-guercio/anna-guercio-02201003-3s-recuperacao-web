@@ -30,9 +30,12 @@ public class TipoPassagemController {
 
     @PostMapping
     public ResponseEntity postTipoPassagem(@RequestBody @Valid TipoPassagem novoTipo) {
-        repository.save(novoTipo);
-        return ResponseEntity.status(201).build();
+        Integer qtdDescricao = repository.countByDescricao(novoTipo.getDescricao());
+        if (qtdDescricao > 0) {
+            return ResponseEntity.status(400).body("Este tipo de passagem já está cadastrado");
+        } else {
+            repository.save(novoTipo);
+            return ResponseEntity.status(201).build();
+        }
     }
-
-
 }
